@@ -1,0 +1,40 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: ''
+webhook_url: 
+sections:
+- type: heading
+  label: Content
+- type: directory
+  path: content/projects
+  label: Projects
+  create: documents
+  match: "**/*"
+  templates:
+  - project
+- type: document
+  path: content/data/authors.json
+  label: Authors List
+- type: document
+  path: content/data/info.json
+  label: Info Page
+- type: heading
+  label: Config
+- type: document
+  path: content/data/config.json
+  label: Site Config
+upload_dir: content/images
+public_path: "/content/images"
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ":filename:"
+build:
+  preview_env:
+  - GRAPHQL_ENDPOINT=/___graphql
+  preview_output_directory: src/
+  install_dependencies_command: yarn install
+  preview_docker_image: node:10
+  mount_path: "/srv"
+  working_dir: "/srv"
+  instant_preview_command: yarn forestry-preview

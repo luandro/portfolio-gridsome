@@ -1,0 +1,32 @@
+---
+label: Project
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- name: author
+  type: select
+  default: ''
+  config:
+    required: true
+    options: []
+    source:
+      type: documents
+      section: authors-list
+      file: content/data/authors.json
+      path: authors
+  label: Author
+  description: Choose author, to add a new author go to the Authors List file
+- type: datetime
+  name: date
+  label: date
+- type: file
+  name: hero_image
+  label: hero_image
+pages:
+- content/projects/on-the-geneology-of-morals.md
+- content/projects/song-of-myself.md
+- content/projects/ne-te-quaesiveris-extra.md
+- content/projects/an-essay-on-walking.md
+- content/projects/sunflower-sutra.md
