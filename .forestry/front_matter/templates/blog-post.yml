@@ -25,8 +25,8 @@ fields:
   name: hero_image
   label: hero_image
 pages:
+- content/projects/an-essay-on-walking.md
+- content/projects/ne-te-quaesiveris-extra.md
 - content/projects/on-the-geneology-of-morals.md
 - content/projects/song-of-myself.md
-- content/projects/ne-te-quaesiveris-extra.md
-- content/projects/an-essay-on-walking.md
 - content/projects/sunflower-sutra.md
