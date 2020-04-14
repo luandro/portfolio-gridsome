@@ -4,22 +4,17 @@
     <div v-html="data.cta"></div>
     <ul>
       <li>
+        <p>Data de nascimento: {{data.birthday}}</p>
+      </li>
+      <li>
         <p>
           <a :href="`mailto:${data.contact.email}`">Email: {{ data.contact.email}}</a>
         </p>
       </li>
+
       <li>
         <p>
-          <a
-            :href="`https://twitter.com/${data.contact.twitter_handle}`"
-          >Twitter: @{{ data.contact.twitter_handle}}</a>
-        </p>
-      </li>
-      <li>
-        <p>
-          <a
-            :href="`https://github.com/${data.contact.github_handle}`"
-          >Github: {{ data.contact.github_handle }}</a>
+          <a :href="data.contact.site">Site: {{ data.contact.site }}</a>
         </p>
       </li>
     </ul>
@@ -41,14 +36,12 @@
         metaData {
             infoData {
                 description
-                cta 
+                cta
+                birthday
                 contact {
                     email
-                    twitter_handle
-                    github_handle
+                    site
                 }
-                background_color
-                text_color
             }
         }
     }
@@ -60,6 +53,9 @@
   padding: 1.5rem 1.25rem;
   p {
     font-size: 1.4rem;
+  }
+  ul p {
+    font-size: 1rem;
   }
 }
 

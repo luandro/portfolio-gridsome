@@ -1,18 +1,21 @@
 <template>
   <Layout page="home">
-    <ProjectList :projects="$page.projects.edges" :timeline="$page.timeline.edges" />
+    <Timeline :timeline="$page.timeline.edges" />
+    <ProjectList :projects="$page.projects.edges" :metaData="$page.metaData" />
   </Layout>
 </template>
 
 <script>
 import ProjectList from '~/components/ProjectList.vue'
+import Timeline from '~/components/Timeline.vue'
 
 export default {
   metaInfo: {
-    title: 'Home'
+    title: 'Edu Yatri Ioschpe'
   },
   components: {
-    ProjectList
+    ProjectList,
+    Timeline
   }
 }
 </script>
@@ -30,19 +33,26 @@ export default {
             }
           }
         }
-        projects: allPortfolio {
+        projects: allPortfolio(
+          sortBy: "year",
+          order: ASC
+        ) {
             edges {
                 node {
                     id
                     title
                     path
                     link
-                    date
+                    month
+                    year
                     hero_image (width:1000, quality: 75)
                     content
                     credits
                 }
             }
+        }
+        metaData {
+          projectsTitle
         }
     }
 </page-query>

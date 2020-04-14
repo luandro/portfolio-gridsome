@@ -11,7 +11,8 @@ module.exports = {
   metaData: {
     siteName: config.title,
     siteDescription: config.description,
-    infoData: infoData
+    infoData: infoData,
+    projectsTitle: config.projects_title
   },
   plugins: [
     {

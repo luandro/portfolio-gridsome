@@ -1,26 +1,6 @@
 <template>
   <section>
-    <div class="timeline">
-      <div v-for="category in categories" :key="category" class="category-item">
-        <div class="category-title">
-          <h2>{{category}}</h2>
-          <div class="border" />
-        </div>
-        <div
-          v-for="item in timeline.filter(i => i.node.category === category)"
-          :key="item.node.title"
-          class="timeline-item"
-        >
-          <a v-if="item.node.link" :href="item.node.link" target="_blank">
-            <h3>{{item.node.title}}</h3>
-          </a>
-          <h3 v-else>{{item.node.title}}</h3>
-          <h4>{{item.node.from}}/{{item.node.to}}</h4>
-          <p v-html="item.node.content"></p>
-        </div>
-      </div>
-    </div>
-    <h2 class="projects-title">Projects</h2>
+    <h2 class="projects-title">{{ metaData.projectsTitle }}</h2>
     <ul class="list">
       <div v-for="project in projects" :key="project.node.title" class="project">
         <li>
@@ -38,7 +18,7 @@
             </a>
             <div class="credits-list">
               <div class="credits" v-for="credit in project.node.credits.split(',')" :key="credit">
-                <p>{{credit}}</p>
+                <p>{{ credit }}</p>
               </div>
             </div>
           </div>
@@ -46,7 +26,7 @@
             <a :href="project.node.link" target="_blank">
               <h2>{{ project.node.title }}</h2>
             </a>
-            <h3>{{ formatDate(project.node.date) }}</h3>
+            <h3>{{ project.node.month }} {{ project.node.year }}</h3>
             <p v-html="project.node.content"></p>
           </div>
         </li>
@@ -56,33 +36,18 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            projects: {
-                type: Array,
-                required: true
-            },
-            timeline: {
-                type: Array,
-                required: true
-            }
-        },
-        computed: {
-          categories () {
-            return [...new Set(this.timeline.map(item => item.node.category))]
-          }
-        },
-        methods: {
-          formatDate(date) {
-            const options = { year: 'numeric', month: 'long' };
-            return new Date(date).toLocaleDateString('pt-BR', options)
-          }, 
-          // formatExcerpt(excerpt) {
-          //   const blurb = excerpt.slice(3,200).trim()
-          //   return blurb.indexOf('</p>') !== -1 ? blurb.slice( 0, blurb.indexOf('</p>')  ).trim()  + "..." : blurb  + "..."
-          // }
-        }
+export default {
+  props: {
+    projects: {
+      type: Array,
+      required: true
+    },
+    metaData: {
+      type: Object,
+      required: true
     }
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -216,8 +181,11 @@
     }
     .credits {
       text-align: left;
-      padding-left: 2vw;
+      // padding-left: 2vw;
       // padding-top: 2vh;
+    }
+    .credits p {
+      font-size: 1em;
     }
     .hero_image {
       // height: 100%;
