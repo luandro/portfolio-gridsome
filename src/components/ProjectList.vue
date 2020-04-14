@@ -3,14 +3,25 @@
     <ul class="list">
       <div v-for="post in posts" :key="post.node.title" class="project">
         <li>
-          <div class="hero_image">
-            <g-image
-              :src="post.node.hero_image"
-              :alt="post.node.title"
-              width="300"
-              height="350"
-              quality="75"
-            ></g-image>
+          <div>
+            <div class="hero_image">
+              <g-image
+                :src="post.node.hero_image"
+                :alt="post.node.title"
+                width="300"
+                height="350"
+                quality="75"
+              ></g-image>
+            </div>
+            <div class="rewards">
+              <p>bla bla blabla</p>
+              <p>bla bla blabla</p>
+              <p>bla bla blabla</p>
+              <p>bla bla blabla</p>
+              <p>bla bla blabla</p>
+              <p>bla bla blabla</p>
+              <p>bla bla blabla</p>
+            </div>
           </div>
           <div class="blogList__info">
             <h2>{{ post.node.title }}</h2>
@@ -58,7 +69,7 @@
   }
   .hero_image {
     width: 100%;
-    // height: 33vh;
+    height: 40vh;
     overflow: hidden;
     background-color: #000;
     img {
@@ -135,11 +146,12 @@
       flex-direction: row;
     }
     .hero_image {
-      height: 100%;
+      // height: 100%;
+      height: 40vh;
       img {
         min-width: 100%;
         height: 100%;
-        width: auto;
+        // width: auto;
         min-height: 0;
       }
     }

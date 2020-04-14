@@ -26,6 +26,19 @@ module.exports = {
           externalLinksRel: ['nofollow', 'noopener', 'noreferrer']
         }
       }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Timeline',
+        baseDir: './content/',
+        path: 'timeline/**/*.md',
+        resolveAbsolutePaths: true,
+        remark: {
+          externalLinksTarget: '_blank',
+          externalLinksRel: ['nofollow', 'noopener', 'noreferrer']
+        }
+      }
     }
   ]
 }
