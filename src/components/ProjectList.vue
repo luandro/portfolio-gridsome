@@ -1,32 +1,53 @@
 <template>
   <section>
+    <div class="timeline">
+      <div v-for="category in categories" :key="category" class="category-item">
+        <div class="category-title">
+          <h2>{{category}}</h2>
+          <div class="border" />
+        </div>
+        <div
+          v-for="item in timeline.filter(i => i.node.category === category)"
+          :key="item.node.title"
+          class="timeline-item"
+        >
+          <a v-if="item.node.link" :href="item.node.link" target="_blank">
+            <h3>{{item.node.title}}</h3>
+          </a>
+          <h3 v-else>{{item.node.title}}</h3>
+          <h4>{{item.node.from}}/{{item.node.to}}</h4>
+          <p v-html="item.node.content"></p>
+        </div>
+      </div>
+    </div>
+    <h2 class="projects-title">Projects</h2>
     <ul class="list">
-      <div v-for="post in posts" :key="post.node.title" class="project">
+      <div v-for="project in projects" :key="project.node.title" class="project">
         <li>
           <div>
-            <div class="hero_image">
-              <g-image
-                :src="post.node.hero_image"
-                :alt="post.node.title"
-                width="300"
-                height="350"
-                quality="75"
-              ></g-image>
-            </div>
-            <div class="rewards">
-              <p>bla bla blabla</p>
-              <p>bla bla blabla</p>
-              <p>bla bla blabla</p>
-              <p>bla bla blabla</p>
-              <p>bla bla blabla</p>
-              <p>bla bla blabla</p>
-              <p>bla bla blabla</p>
+            <a :href="project.node.link" target="_blank">
+              <div class="hero_image">
+                <g-image
+                  :src="project.node.hero_image"
+                  :alt="project.node.title"
+                  width="300"
+                  height="350"
+                  quality="75"
+                ></g-image>
+              </div>
+            </a>
+            <div class="credits-list">
+              <div class="credits" v-for="credit in project.node.credits.split(',')" :key="credit">
+                <p>{{credit}}</p>
+              </div>
             </div>
           </div>
           <div class="blogList__info">
-            <h2>{{ post.node.title }}</h2>
-            <h3>{{ formatDate(post.node.date) }}</h3>
-            <p v-html="post.node.content"></p>
+            <a :href="project.node.link" target="_blank">
+              <h2>{{ project.node.title }}</h2>
+            </a>
+            <h3>{{ formatDate(project.node.date) }}</h3>
+            <p v-html="project.node.content"></p>
           </div>
         </li>
       </div>
@@ -37,14 +58,24 @@
 <script>
     export default {
         props: {
-            posts: {
+            projects: {
+                type: Array,
+                required: true
+            },
+            timeline: {
                 type: Array,
                 required: true
             }
         },
+        computed: {
+          categories () {
+            return [...new Set(this.timeline.map(item => item.node.category))]
+          }
+        },
         methods: {
           formatDate(date) {
-            return new Date(date).toDateString().slice(4)
+            const options = { year: 'numeric', month: 'long' };
+            return new Date(date).toLocaleDateString('pt-BR', options)
           }, 
           // formatExcerpt(excerpt) {
           //   const blurb = excerpt.slice(3,200).trim()
@@ -55,6 +86,12 @@
 </script>
 
 <style scoped lang="scss">
+.timeline {
+  padding: 10vh 3vw;
+}
+.timeline-item {
+  padding: 0 2.5vw;
+}
 .list {
   .project:hover {
     opacity: 1;
@@ -66,6 +103,13 @@
         }
       }
     }
+  }
+  .credits-list {
+    padding-top: 2vh;
+  }
+  .credits {
+    width: 100%;
+    text-align: center;
   }
   .hero_image {
     width: 100%;
@@ -117,6 +161,31 @@
 }
 
 @media (min-width: 768px) {
+  .category-item {
+    display: flex;
+  }
+  .category-item .category-title {
+    h2 {
+      width: 180px;
+    }
+    display: flex;
+    width: 180px;
+  }
+  .category-item .border {
+    border-right: 0.5px solid black;
+    height: 25vh;
+    width: 1px;
+    padding-left: 2vw;
+  }
+  .projects-title {
+    width: 100%;
+    font-size: 3em;
+    margin: 0 auto;
+    text-align: center;
+    border-top: #464646 1px solid;
+    border-bottom: #464646 1px solid;
+    padding: 2vh 0;
+  }
   .list {
     .project:hover {
       opacity: 1;
@@ -144,6 +213,11 @@
       min-height: 250px;
       // height: 33.333vh;
       flex-direction: row;
+    }
+    .credits {
+      text-align: left;
+      padding-left: 2vw;
+      // padding-top: 2vh;
     }
     .hero_image {
       // height: 100%;

@@ -55,7 +55,7 @@
 query getPostData ($path: String!) {
     post: blog(path: $path) {
         title
-        date (format: "MMMM DD YYYY")
+        date
         author
         content
         hero_image (quality: 80)

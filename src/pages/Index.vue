@@ -1,6 +1,6 @@
 <template>
   <Layout page="home">
-    <ProjectList :posts="$page.posts.edges" />
+    <ProjectList :projects="$page.projects.edges" :timeline="$page.timeline.edges" />
   </Layout>
 </template>
 
@@ -17,17 +17,30 @@ export default {
 }
 </script>
 <page-query>
-    query getPortfolioData {
-        posts: allPortfolio {
+    query getData {   
+        timeline: allTimeline {
+          edges {
+            node {
+              title
+              category
+              to
+              from
+              content
+              link
+            }
+          }
+        }
+        projects: allPortfolio {
             edges {
                 node {
                     id
                     title
                     path
-                    author
-                    date  (format: "MMMM DD YYYY")
+                    link
+                    date
                     hero_image (width:1000, quality: 75)
                     content
+                    credits
                 }
             }
         }

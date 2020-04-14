@@ -1,6 +1,6 @@
 ---
 title: An Essay on Walking
-author: Henry David Thoreau
+link: http://google.com
 from: 2012
 to: 2019
 category: Organizations
