@@ -3,7 +3,7 @@ title: Madeireiros em terras Xavante - Filme Denuncia
 month: ""
 year: 2014
 hero_image: "/content/images/madeireiros-xavante.jpg"
-credits: Terra Indigena de São Marcos - Brasil (MT), Documentário - cor, digital / 1h 35min, Produção - Grupo de cinematógrafos Ihoibate - Aldeia N.S. de Guadalupe, Imagens - Evanildo Onomro e Janio Wairuira, Edição - Amancio Wedi, Educador - Edu Yatri
+credits: Terra Indigena de São Marcos - Brasil (MT), Documentário - cor digital / 1h 35min, Produção - Grupo de cinematógrafos Ihoibate - Aldeia N.S. de Guadalupe, Imagens - Evanildo Onomro e Janio Wairuira, Edição - Amancio Wedi, Educador - Edu Yatri
 link: https://www.youtube.com/watch?v=uHnOfKcBGyE
 ---
 
