@@ -29,8 +29,9 @@ export default {
   computed: {
     categories () {
       return [...new Set(this.timeline
-      .sort()
+      .sort((a, b) => a.node.category.split('-')[0] - b.node.category.split('-')[0])
       .map(item => item.node.category.split('-')[1]))]
+
     }
   },
   methods: {
