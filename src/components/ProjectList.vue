@@ -191,7 +191,7 @@ export default {
       // height: 100%;
       height: 40vh;
       img {
-        min-width: 100%;
+        min-width: 20vw;
         height: 100%;
         // width: auto;
         min-height: 0;
