@@ -34,8 +34,8 @@ export default {
           }
         }
         projects: allPortfolio(
-          sortBy: "year",
-          order: ASC
+          sortBy: "date",
+          order: DESC
         ) {
             edges {
                 node {
@@ -43,8 +43,7 @@ export default {
                     title
                     path
                     link
-                    month
-                    year
+                    date
                     hero_image (width:1000, quality: 75)
                     content
                     credits

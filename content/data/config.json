@@ -2,10 +2,9 @@
     "title": "Edu Yatri Ioschpe",
     "description": "Cineasta, educador, indigenista, agrofloresteiro e Ser humano.",
     "contact": {
-      "email": "eioschpe@uol.com.br"
+        "email": "eduyatri@protonmail.com"
     },
     "primary_color": "#ACCAC5",
     "repository_url": "https://github.com/luandro/portfolio-gridsome",
     "projects_title": "Filmes Individuais/coletivos"
-  }
-  
+}

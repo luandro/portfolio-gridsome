@@ -26,7 +26,7 @@
             <a :href="project.node.link" target="_blank">
               <h2>{{ project.node.title }}</h2>
             </a>
-            <h3>{{ project.node.month }} {{ project.node.year }}</h3>
+            <h3>{{ new Date(project.node.date).getFullYear() }}</h3>
             <p v-html="project.node.content"></p>
           </div>
         </li>
@@ -144,12 +144,12 @@ export default {
   }
   .projects-title {
     width: 100%;
-    font-size: 3em;
+    font-size: 2em;
     margin: 0 auto;
     text-align: center;
     border-top: #464646 1px solid;
     border-bottom: #464646 1px solid;
-    padding: 2vh 0;
+    padding: 4vh 0;
   }
   .list {
     .project:hover {

@@ -14,7 +14,7 @@
 
       <li>
         <p>
-          <a :href="data.contact.site">Site: {{ data.contact.site }}</a>
+          <a :href="data.contact.site" target="_blank">Site: {{ data.contact.site }}</a>
         </p>
       </li>
     </ul>

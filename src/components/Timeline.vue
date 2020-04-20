@@ -45,10 +45,10 @@ export default {
 .timeline-item {
   padding: 0 2.5vw;
   h3 {
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
   h4 {
-    margin-top: -1em;
+    margin-top: -1.2em;
   }
 }
 
