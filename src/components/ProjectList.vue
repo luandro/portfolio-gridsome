@@ -27,7 +27,7 @@
               <h2>{{ project.node.title }}</h2>
             </a>
             <h3>{{ new Date(project.node.date).getFullYear() }}</h3>
-            <p v-html="project.node.content"></p>
+            <div v-html="project.node.content"></div>
           </div>
         </li>
       </div>

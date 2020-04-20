@@ -12,7 +12,7 @@
           </a>
           <h3 v-else>{{ item.node.title }}</h3>
           <h4>{{ item.node.from }}{{ item.node.to ? `/${item.node.to}` : ''}}</h4>
-          <p v-html="item.node.content"></p>
+          <div v-html="item.node.content"></div>
         </div>
       </div>
     </div>
