@@ -6,16 +6,12 @@
         <div class="border" />
       </div>
       <div class="category-list">
-        <div
-          v-for="item in timeline.filter(i => i.node.category === category)"
-          :key="item.node.title"
-          class="timeline-item"
-        >
+        <div v-for="item in orderTimeline(category)" :key="item.node.title" class="timeline-item">
           <a v-if="item.node.link" :href="item.node.link" target="_blank">
             <h3>{{ item.node.title }}</h3>
           </a>
           <h3 v-else>{{ item.node.title }}</h3>
-          <h4>{{ item.node.from }}/{{ item.node.to }}</h4>
+          <h4>{{ item.node.from }}{{ item.node.to ? `/${item.node.to}` : ''}}</h4>
           <p v-html="item.node.content"></p>
         </div>
       </div>
@@ -32,7 +28,16 @@ export default {
   },
   computed: {
     categories () {
-      return [...new Set(this.timeline.map(item => item.node.category))].reverse()
+      return [...new Set(this.timeline
+      .sort()
+      .map(item => item.node.category.split('-')[1]))]
+    }
+  },
+  methods: {
+    orderTimeline (category) {
+      return this.timeline
+        .filter(i => i.node.category.split('-')[1] === category)
+        .sort((a, b) => parseInt(b.node.from) - parseInt(a.node.from))
     }
   }
 }
@@ -66,7 +71,7 @@ export default {
   }
   .category-item .border {
     border-right: 0.5px solid black;
-    height: 25vh;
+    height: 15vh;
     width: 1px;
     padding-left: 2vw;
   }
